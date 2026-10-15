@@ -309,7 +309,9 @@ jobs:
       - name: Dump config.log
         if: failure()
         run: tail -n 80 build/deps/build/libidn2/config.log
-
+      - name: Dump config.log
+        if: failure()
+        run: sed -n '/checking whether the C compiler works/,/^## Cache variables/p' build/deps/build/libidn2/config.log | head -n 60
       - name: Create tar release files
         run: |
           set -e
