@@ -186,7 +186,8 @@ jobs:
           echo "CXX=${{ matrix.host }}-g++" >> $GITHUB_ENV
           echo "AR=${{ matrix.host }}-ar" >> $GITHUB_ENV
           echo "ZIG_FLAGS=-target ${{ matrix.host }}" >> $GITHUB_ENV
-
+          echo "CFLAGS=-std=c17 -Wall" >> $GITHUB_ENV
+          
       - name: Set up Android NDK
         if: matrix.platform == 'android'
         uses: nttld/setup-ndk@v1
