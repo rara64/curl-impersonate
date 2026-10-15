@@ -234,8 +234,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install build-essential pkg-config cmake ninja-build curl qemu-user libc6-i386-cross
-          sudo apt-get install gcc-aarch64-linux-gnu gcc-arm-linux-gnueabihf gcc-riscv64-linux-gnu gcc-14-loongarch64-linux-gnu
-
+          sudo apt-get install gcc-aarch64-linux-gnu gcc-arm-linux-gnueabihf gcc-riscv64-linux-gnu gcc-14-loongarch64-linux-gnu gcc-arm-linux-gnueabi g++-arm-linux-gnueabi libc6-armel-cross
       - name: Install macOS dependencies
         if: runner.os == 'macOS'
         run: |
