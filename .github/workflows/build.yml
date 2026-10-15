@@ -86,7 +86,7 @@ jobs:
             arch: arm
             host: arm-linux-gnueabi
             host_label: arm-linux-gnueabi
-            zigflags: -target arm-linux-gnueabi.2.17.0 -mcpu=arm926ej_s
+            zigflags: -target arm-linux-gnueabi -mcpu=arm926ej_s
             make: make
           - os: ubuntu-latest
             platform: linux
@@ -305,6 +305,10 @@ jobs:
           else
             ${{ matrix.make }} install-strip BUILD_DIR=build CMAKE_CONFIGURE_ARGS="$cmake_args"
           fi
+
+      - name: Dump config.log
+        if: failure()
+        run: tail -n 80 build/deps/build/libidn2/config.log
 
       - name: Create tar release files
         run: |
