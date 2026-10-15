@@ -86,7 +86,6 @@ jobs:
             arch: arm
             host: arm-linux-gnueabi
             host_label: arm-linux-gnueabi
-            zigflags: -target arm-linux-gnueabi -mcpu=arm926ej_s
             make: make
           - os: ubuntu-latest
             platform: linux
@@ -173,12 +172,19 @@ jobs:
           version: 0.15.2
 
       - name: Set zig env
-        if: matrix.platform == 'linux'
+        if: matrix.platform == 'linux' && matrix.zigflags
         run: |
           echo "CC=${{ github.workspace }}/zigshim/cc" >> $GITHUB_ENV
           echo "CXX=${{ github.workspace }}/zigshim/cxx" >> $GITHUB_ENV
           echo "AR=${{ github.workspace }}/zigshim/ar" >> $GITHUB_ENV
           echo "ZIG_FLAGS=${{ matrix.zigflags }}" >> $GITHUB_ENV
+
+      - name: Set gcc env
+        if: matrix.platform == 'linux' && !matrix.zigflags
+        run: |
+          echo "CC=${{ matrix.host }}-gcc" >> $GITHUB_ENV
+          echo "CXX=${{ matrix.host }}-g++" >> $GITHUB_ENV
+          echo "AR=${{ matrix.host }}-ar" >> $GITHUB_ENV
 
       - name: Set up Android NDK
         if: matrix.platform == 'android'
