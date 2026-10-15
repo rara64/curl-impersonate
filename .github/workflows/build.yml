@@ -86,7 +86,7 @@ jobs:
             arch: arm
             host: arm-linux-gnueabi
             host_label: arm-linux-gnueabi
-            zigflags: -target arm-linux-gnueabi -mcpu=arm926
+            zigflags: -target arm-linux-gnueabi -mcpu=arm926ej_s
             make: make
           - os: ubuntu-latest
             platform: linux
