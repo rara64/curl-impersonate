@@ -86,7 +86,7 @@ jobs:
             arch: arm
             host: arm-linux-gnueabi
             host_label: arm-linux-gnueabi
-            zigflags: -target arm-linux-gnueabi.2.17.0 -mcpu=arm926ej_s -L/usr/lib/gcc-cross/arm-linux-gnueabi/default -lgcc
+            zigflags: -target arm-linux-gnueabi.2.17.0 -mcpu=arm926ej_s -L/usr/lib/gcc-cross/arm-linux-gnueabi/13 -lgcc
             make: make
           - os: ubuntu-latest
             platform: linux
